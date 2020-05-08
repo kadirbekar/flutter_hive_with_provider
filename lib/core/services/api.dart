@@ -2,8 +2,10 @@ import 'package:hive_local_storage/core/models/commens.dart';
 import '../consts/consts.dart' as cons;
 import 'package:http/http.dart' as http;
 
+
 class ApiService {
 
+  //get comments from the fake api
   Future<List<Comments>> getComments() async {
     List<Comments> comments = List<Comments>();
     final response = await http.get(cons.API_URL);

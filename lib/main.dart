@@ -8,16 +8,17 @@ import 'package:path_provider/path_provider.dart';
 import 'package:hive_local_storage/core/consts/consts.dart' as cons;
 import 'package:provider/provider.dart';
 
-import 'core/models/commens.dart';
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  //get path of your data
   Directory document = await getApplicationDocumentsDirectory();
 
+  //assing path to hive
   Hive.init(document.path);
 
-  await Hive.openBox<Comments>(cons.H_COMMENTS);
+  //run hive
+  await Hive.openBox<String>(cons.H_COMMENTS);
 
   runApp(MyApp());
 }
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         theme: ThemeData(
+          //set default font for entire app
           textTheme: GoogleFonts.oxygenMonoTextTheme(),
         ),
         debugShowCheckedModeBanner: false,

@@ -5,6 +5,7 @@ import 'package:hive_local_storage/core/services/api.dart';
 import 'package:hive_local_storage/core/consts/consts.dart' as cons;
 import 'package:hive_local_storage/core/viewmodels/comment_vm.dart';
 import 'package:provider/provider.dart';
+import '..//widgets/comment_card.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -17,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   ApiService _apiService = ApiService();
   List<Comments> comments = [];
 
+  //init comments
   getComments() async {
     comments = await _apiService.getComments();
   }
@@ -29,7 +31,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final commentProvider = Provider.of<CommentViewModel>(context, listen: false);
+    final commentProvider =
+        Provider.of<CommentViewModel>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: cons.APPBAR_COLOR,
@@ -47,7 +50,7 @@ class _HomePageState extends State<HomePage> {
             if (snapshot.connectionState == ConnectionState.done) {
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  return commentCard(index, commentProvider);
+                  return commentCard(comments[index], commentProvider);
                 },
                 itemCount: comments.length,
               );
@@ -65,28 +68,22 @@ class _HomePageState extends State<HomePage> {
   //comment card
   Widget commentCard(index, commentProvider) => Padding(
         padding: EdgeInsets.all(5),
-        child: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15)),
-          ),
-          color: Colors.cyan.withOpacity(0.7),
-          child: ListTile(
-            leading: CircleAvatar(
-              child: Text(comments[index].postId.toString()),
-              backgroundColor: Colors.indigo,
-            ),
-            title: Text(comments[index].name.toUpperCase()),
-            subtitle: Text(comments[index].body),
-            trailing: IconButton(
-              icon: Icon(
-                Icons.note_add,
-                size: 40,
-                color: Colors.black,
+        child: CommentCard(
+          backgroundColor: Colors.cyan.withOpacity(0.7),
+          comment: index,
+          buttons: Column(
+            children: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.add_circle,
+                  color: Colors.indigo,
+                  size: 45,
+                ),
+                onPressed: () {
+                  commentProvider.saveComment(index);
+                },
               ),
-              onPressed: () {
-                commentProvider.saveComment(comments[index]);
-              },
-            ),
+            ],
           ),
         ),
       );

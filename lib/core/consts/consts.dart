@@ -6,6 +6,7 @@ const String API_URL = "https://jsonplaceholder.typicode.com/comments";
 //colors
 const Color APPBAR_COLOR = Colors.teal;
 const Color TABBAR_COLOR = Colors.teal;
+const Color commentCardColor = Colors.greenAccent;
 
 //hive
 const String H_COMMENTS = "comments";
