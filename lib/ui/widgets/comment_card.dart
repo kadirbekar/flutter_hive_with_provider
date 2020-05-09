@@ -13,7 +13,7 @@ class CommentCard extends StatelessWidget {
   CommentCard({
     this.comment,
     this.onPressed,
-    this.backgroundColor = cons.commentCardColor,
+    this.backgroundColor = cons.COMMENT_CARD_COLOR,
     this.deleteButton,
     this.addButton,
     this.buttons

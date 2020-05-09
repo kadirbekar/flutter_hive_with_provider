@@ -31,14 +31,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final commentProvider =
-        Provider.of<CommentViewModel>(context, listen: false);
+    final commentProvider = Provider.of<CommentViewModel>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: cons.APPBAR_COLOR,
         centerTitle: true,
         title: Text(
-          "Comments",
+          cons.COMMENTS,
           style: GoogleFonts.acme(),
         ),
       ),

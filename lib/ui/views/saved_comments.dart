@@ -22,7 +22,7 @@ class _SavedCommentsState extends State<SavedComments> {
   @override
   void initState() {
     super.initState();
-    commentBox = Hive.box<String>(cons.H_COMMENTS);
+    commentBox = Hive.box<String>(cons.COMMENT_KEY);
   }
 
   @override
@@ -49,7 +49,7 @@ class _SavedCommentsState extends State<SavedComments> {
                 return Padding(
                   padding: EdgeInsets.all(5),
                   child: CommentCard(
-                    backgroundColor: cons.commentCardColor,
+                    backgroundColor: cons.COMMENT_CARD_COLOR,
                     comment: currentComment,
                     buttons: Column(
                       children: <Widget>[

@@ -18,7 +18,7 @@ Future<void> main() async {
   Hive.init(document.path);
 
   //run hive
-  await Hive.openBox<String>(cons.H_COMMENTS);
+  await Hive.openBox<String>(cons.COMMENT_KEY);
 
   runApp(MyApp());
 }

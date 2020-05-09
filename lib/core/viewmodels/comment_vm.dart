@@ -8,7 +8,7 @@ import 'package:hive_local_storage/core/consts/consts.dart' as cons;
 class CommentViewModel extends ChangeNotifier {
   List<Comments> _comments = [];
   List<Comments> get comments => _comments;
-  Box<String> commentBox = Hive.box<String>(cons.H_COMMENTS);
+  Box<String> commentBox = Hive.box<String>(cons.COMMENT_KEY);
 
   
   //save comment
