@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
     final commentProvider = Provider.of<CommentViewModel>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: cons.APPBAR_COLOR,
+        backgroundColor: cons.DEFAULT_COLOR,
         centerTitle: true,
         title: Text(
           cons.COMMENTS,
@@ -71,6 +71,7 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.cyan.withOpacity(0.7),
           comment: index,
           buttons: Column(
+            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               IconButton(
                 icon: Icon(

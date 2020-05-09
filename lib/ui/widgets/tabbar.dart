@@ -16,7 +16,7 @@ class _TabbarWidgetState extends State<TabbarWidget> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: cons.TABBAR_COLOR,
+        backgroundColor: cons.DEFAULT_COLOR,
         bottomNavigationBar: tabbar,
         body: Container(
           child: TabBarView(
@@ -29,19 +29,25 @@ class _TabbarWidgetState extends State<TabbarWidget> {
       ),
     );
   }
-  
+
   Widget get tabbar => TabBar(
-        labelColor: Colors.white,
+        labelColor: Colors.black,
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorColor: Colors.red,
+        labelStyle: TextStyle(
+          fontSize: 17,
+          fontWeight: FontWeight.w600,
+        ),
         tabs: [
           Tab(
+            text: 'Comments',
             icon: Icon(
               Icons.comment,
               size: 35,
             ),
           ),
           Tab(
+            text: 'Saved Comments',
             icon: Icon(
               Icons.save,
               size: 35,

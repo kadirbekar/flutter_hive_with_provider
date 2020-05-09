@@ -31,8 +31,15 @@ class CommentViewModel extends ChangeNotifier {
   }
 
   //delete all of them
-  removeAllComments() {
+  removeAllComments(List<dynamic> keys) {
     _comments.clear();
+    commentBox.deleteAll(keys);
     notifyListeners();
+  }
+
+  //edit comment
+  editComment({Comments comments}) {
+    final encodedComment = jsonEncode(comments);
+    commentBox.put(comments.id, encodedComment);
   }
 }
