@@ -79,9 +79,7 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.indigo,
                   size: 45,
                 ),
-                onPressed: () {
-                  commentProvider.saveComment(index);
-                },
+                onPressed: () => commentProvider.saveComment(index),
               ),
             ],
           ),

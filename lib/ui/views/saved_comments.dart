@@ -103,15 +103,11 @@ class _SavedCommentsState extends State<SavedComments> {
               size: 60,
               color: Colors.red,
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
             Text(
               "No saved data",
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 24,
-              ),
+              style: TextStyle(fontSize: 24,),
             ),
           ],
         ),
