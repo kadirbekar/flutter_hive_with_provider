@@ -24,6 +24,8 @@ dependencies:
   hive_flutter: ^0.3.0+2
   http: ^0.12.1
   provider: ^4.1.0
+  shared_preferences: ^0.5.6+3
+  flutter_svg: ^0.17.4
 
 dev_dependencies:
   flutter_test:
@@ -36,8 +38,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/
+    - assets/svg/
   #   - images/a_dot_ham.jpeg
 
 

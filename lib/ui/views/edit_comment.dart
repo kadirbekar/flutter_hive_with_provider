@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hive_local_storage/core/consts/consts.dart' as cons;
-import 'package:hive_local_storage/core/models/commens.dart';
-import 'package:hive_local_storage/core/viewmodels/comment_vm.dart';
 import 'package:provider/provider.dart';
+
+import '../../core/consts/consts.dart' as cons;
+import '../../core/models/commens.dart';
+import '../../core/viewmodels/comment_vm.dart';
 
 class EditComment extends StatefulWidget {
   final Comments comment;

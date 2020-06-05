@@ -25,7 +25,7 @@ class CommentCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(15)),
       ),
-      color: this.backgroundColor,
+      //color: this.backgroundColor,
       child: ListTile(
         leading: CircleAvatar(
           child: Text(comment.postId.toString()),

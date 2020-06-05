@@ -2,8 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
-import 'package:hive_local_storage/core/models/commens.dart';
-import 'package:hive_local_storage/core/consts/consts.dart' as cons;
+
+import '../consts/consts.dart' as cons;
+import '../models/commens.dart';
 
 class CommentViewModel extends ChangeNotifier {
   List<Comments> _comments = [];

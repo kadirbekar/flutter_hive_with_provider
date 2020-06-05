@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hive_local_storage/core/models/commens.dart';
-import 'package:hive_local_storage/core/services/api.dart';
-import 'package:hive_local_storage/core/consts/consts.dart' as cons;
-import 'package:hive_local_storage/core/viewmodels/comment_vm.dart';
+import 'package:hive_local_storage/core/services/local_storage_servis.dart';
+import 'package:hive_local_storage/core/services/theme_servis.dart';
 import 'package:provider/provider.dart';
+
+import '../../core/consts/consts.dart' as cons;
+import '../../core/models/commens.dart';
+import '../../core/services/api.dart';
+import '../../core/viewmodels/comment_vm.dart';
 import '..//widgets/comment_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,6 +26,10 @@ class _HomePageState extends State<HomePage> {
     comments = await _apiService.getComments();
   }
 
+  //get theme value from shared preferences, at the beginning it's already false
+  bool themeNewValue = LocalStorageService.getThemeValue;
+  bool darkTheme = false;
+
   @override
   void initState() {
     super.initState();
@@ -32,14 +39,29 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final commentProvider = Provider.of<CommentViewModel>(context, listen: false);
+    final themeData = Provider.of<ThemeService>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: cons.DEFAULT_COLOR,
+        //backgroundColor: cons.DEFAULT_COLOR,
         centerTitle: true,
         title: Text(
           cons.COMMENTS,
           style: GoogleFonts.acme(),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.lightbulb_outline,
+              size: 30,
+              color: Theme.of(context).iconTheme.color,
+            ),
+            onPressed: () {
+              themeNewValue = !themeNewValue;
+              LocalStorageService.setTheme(themeNewValue);
+              themeData.getTheme = themeNewValue;
+            },
+          )
+        ],
       ),
       body: Container(
         color: Colors.teal.withOpacity(0.2),
